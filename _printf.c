@@ -3,6 +3,7 @@
 /**
  * handle_prc - handles something
  * @c: string to handle
+ * @args: this is a variable
  * Return: return length of it
 */
 
@@ -55,6 +56,10 @@ int _printf(const char *format, ...)
 			if (*format == 'n')
 			{
 				charPrinted = write(1, "\n", 1);
+			}
+			else if (*format == 't')
+			{
+				charPrinted = write(1, "\t", 1);
 			}
 		}
 		else
