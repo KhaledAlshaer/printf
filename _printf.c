@@ -6,7 +6,7 @@
  * Return: return length of it
 */
 
-int handle_prc(char c)
+int handle_prc(char c, va_list args)
 {
 	int charPrinted;
 
@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			charPrinted = handle_prc(*format);
+			charPrinted = handle_prc(*format, args);
 		}
 		else if (*format == '\\')
 		{
