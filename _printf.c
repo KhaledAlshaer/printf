@@ -8,34 +8,41 @@
 
 int _printf(const char *format, ...)
 {
-	int printingCounter, printedLength = 0;
+	int charPrinted, printedLen = 0;
 	va_list args;
 
 	va_start(args, format);
-
-	isFormatValid(format);
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			printingCounter = printf_one(*format, args);
-		}
-		else if (*format == '\\')
-		{
-			format++;
-			printingCounter = printf_two(*format);
-		}
-		else
-		{
-			printingCounter = _putchar(*format);
-		}
+			if (*format == 'd' || *format == 'i')
+			{
+				charPrinted = handle_di(args);
+			}
+			else if (*format == '%')
+			{
+				charPrinted = handle_percent(args);
+			}
+			else if (*format == 'c')
+			{
+				charPrinted = handle_c(args);
+			}
+			else if (*format == 's')
+			{
+				charPrinted = handle_s(args);
+			}
+			}
+			else
+			{
+			charPrinted = write(1, format, 1);
+			}
 
-		printedLength += printingCounter;
-		format++;
-	}
+			printedLen += charPrinted;
+			format++;
+			}
 
 	va_end(args);
-	return (printedLength);
+	return (printedLen);
 }

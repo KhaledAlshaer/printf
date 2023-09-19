@@ -8,20 +8,24 @@
 
 int handle_s(va_list args)
 {
-	int len;
-	char *str = va_arg(args, char *);
+	int len, printedLen = 0, i = 0;
+	char current;
+	char *str = va_arg(args, char*);
 
-		if (str == NULL)
-			return (-1);
+	if (str == NULL)
+		str = "(null)";
 
+	for (len = 0; str[len] != '\0'; len++)
+	{
+		;
+	}
 
-		for (len = 0; str[len] != '\0'; len++)
-		{
-			;
-		}
+	while (i < len)
+	{
+		current = str[i];
+		printedLen += write(1, &current, 1);
+		i++;
+	}
 
-		len = _puts(str);
-
-
-		return (len);
+	return (printedLen);
 }

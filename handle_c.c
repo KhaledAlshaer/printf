@@ -8,13 +8,17 @@
 
 int handle_c(va_list args)
 {
-	char c = va_arg(args, int);
 	int len;
+	char c = va_arg(args, int);
 
 	if (c < 0 || (unsigned char)c > 127)
-		len = _putchar('?');
+	{
+		len = write(1, "?", 1);
+	}
 	else
-		len = _putchar(c);
+	{
+		len = write(1, &c, 1);
+	}
 
 	return (len);
 }
