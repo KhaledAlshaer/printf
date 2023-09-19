@@ -1,6 +1,36 @@
 #include "main.h"
 
 /**
+ * handle_prc - handles something
+ * @c: string to handle
+ * Return: return length of it
+*/
+
+int handle_prc(char c)
+{
+	int charPrinted;
+
+	if (c == 'd' || c == 'i')
+	{
+		charPrinted = handle_di(args);
+	}
+	else if (c == '%')
+	{
+		charPrinted = handle_percent(args);
+	}
+	else if (c == 'c')
+	{
+		charPrinted = handle_c(args);
+	}
+	else if (c == 's')
+	{
+		charPrinted = handle_s(args);
+	}
+
+	return (charPrinted);
+}
+
+/**
  * _printf - printing main function
  * @format: string to handle
  * Return: print the str and return length of it
@@ -17,31 +47,24 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'd' || *format == 'i')
+			charPrinted = handle_prc(*format);
+		}
+		else if (*format == '\\')
+		{
+			format++;
+			if (*format == 'n')
 			{
-				charPrinted = handle_di(args);
+				charPrinted = write(1, "\n", 1);
 			}
-			else if (*format == '%')
-			{
-				charPrinted = handle_percent(args);
-			}
-			else if (*format == 'c')
-			{
-				charPrinted = handle_c(args);
-			}
-			else if (*format == 's')
-			{
-				charPrinted = handle_s(args);
-			}
-			}
-			else
-			{
+		}
+		else
+		{
 			charPrinted = write(1, format, 1);
-			}
+		}
 
 			printedLen += charPrinted;
 			format++;
-			}
+	}
 
 	va_end(args);
 	return (printedLen);
