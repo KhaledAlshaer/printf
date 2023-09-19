@@ -1,7 +1,9 @@
 #include "main.h"
+
 /**
  * printf_helper - help printf to print args
  * @c: the specifier
+ * @args: the arguments
  * Return: invoke function and return number of char
 */
 
@@ -10,14 +12,14 @@ int printf_helper(char c, va_list args)
 	int i = 0, printingCounter;
 
 	specifiers specs[] = {
-		{'c', handle_c,}, {'s', handle_s},
-		{'%', handle_percent}, {'d', handle_di},
-		{'i', handle_di}, {'\0', NULL}
+		{"c", handle_c,}, {"s", handle_s},
+		{"%", handle_percent}, {"d", handle_di},
+		{"i", handle_di}, {NULL, NULL}
 	};
 
-	while (specs[i].specify != '\0')
+	while (!specs[i].flag)
 	{
-		if (specs[i].specify == c)
+		if (specs[i].flag[0] == c)
 		{
 			printingCounter = (specs[i].f(args));
 		}
