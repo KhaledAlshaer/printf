@@ -1,86 +1,67 @@
 #include "main.h"
 
 /**
- * _numLength - calc length
- * @num: number to calc
- * Return: length
-*/
-
-int _numLength(int num)
-{
-	int len = 0;
-
-	while (num != 0)
-	{
-		num /= 10;
-		len++;
-	}
-
-	return (len);
-}
-
-/**
- * _numToStr - convert num to str
- * @str: the buffer
- * @num: the number
- * @numLen: the num length
+ * revString - rev the string
+ * @str: the string
+ * @start: first number
+ * @end: last number
  * Return: Nothing
 */
 
-void _numToStr(char *str, int num, int numLen)
+void revString(char *str, int start, int end)
 {
-	char numToC;
-	int flag = 0;
+	char temp;
 
-	if (num < 0)
+	while (start < end)
 	{
-		num *= -1;
-		flag = 1;
-	}
-
-	str[numLen] = '\0';
-	while (num != 0)
-	{
-		numLen--;
-		numToC = (num % 10) + '0';
-		str[numLen] = numToC;
-		num /= 10;
-	}
-
-	if (flag)
-	{
-		numLen--;
-		str[0] = '-';
+		temp = str[start];
+		str[start] = str[end];
+		str[end] = temp;
+		start++;
+		end--;
 	}
 }
 
 /**
- * handle_di - Handling %d %i
- * @args: this is a variable
- * Return: Print the numb & return the size of it
+ * handle_di - handling num
+ * @args: the number
+ * Return: the length and print the number
 */
 
 int handle_di(va_list args)
 {
-	int num = va_arg(args, int), numLen, printedLen;
-	char *str;
+	int number = va_arg(args, int);
+	int counter = 0, isNegative = 0, temp, i;
+	char str[20];
 
-	numLen = _numLength(num);
-
-	if (num < 0)
-		numLen += 1;
-
-	str = malloc(sizeof(char) * (numLen + 1));
-
-	if (str == NULL)
+	if (number < 0)
 	{
-		free(str);
-		return (1);
+		isNegative = 1;
+		number = -number;
 	}
 
-	_numToStr(str, num, numLen);
+	temp = number;
+	do {
+		counter++;
+		temp /= 10;
+	} while (temp > 0);
 
-	printedLen = write(1, str, numLen);
-	free(str);
-	return (printedLen);
+	i = 0;
+	if (isNegative)
+	{
+		str[i++] = '-';
+	}
+
+	do {
+		str[i++] = (char)((number % 10) + '0');
+		number /= 10;
+	} while (number > 0);
+
+	str[i] = '\0';
+
+	revString(str, isNegative, i - 1);
+
+	_puts(str);
+
+	return (counter);
 }
