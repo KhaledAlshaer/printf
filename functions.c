@@ -17,7 +17,7 @@ int printf_helper(char c, va_list args)
 		{"i", handle_di}, {NULL, NULL}
 	};
 
-	while (!specs[i].flag)
+	while (specs[i].flag != NULL)
 	{
 		if (specs[i].flag[0] == c)
 		{
