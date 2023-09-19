@@ -20,9 +20,12 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-
-			printingCounter = printf_helper(*format, args);
-
+			printingCounter = printf_one(*format, args);
+		}
+		else if (*format == '\\')
+		{
+			format++;
+			printingCounter = printf_two(*format);
 		}
 		else
 		{

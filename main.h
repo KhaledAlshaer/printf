@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * struct specifiers_struct - struct for specifiers
@@ -28,11 +29,12 @@ int isFormatValid(const char *format);
 int handle_c(va_list args);
 int handle_s(va_list args);
 int handle_percent(va_list args);
+int handle_specials(va_list args);
 
 int handle_di(va_list args);
 
-
-int printf_helper(char c, va_list args);
+int printf_one(char c, va_list args);
+int printf_two(char c);
 int _printf(const char *format, ...);
 
 #endif

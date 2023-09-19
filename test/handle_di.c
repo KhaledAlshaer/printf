@@ -3,8 +3,8 @@
 /**
  * revString - rev the string
  * @str: the string
- * @startIdx: first number
- * @endIdx: last number
+ * @start: first number
+ * @end: last number
  * Return: Nothing
 */
 
@@ -61,5 +61,7 @@ int handle_di(va_list args)
 
 	revString(str, isNegative, i - 1);
 
-	return (_puts(str));
+	_puts(str);
+
+	return (counter);
 }

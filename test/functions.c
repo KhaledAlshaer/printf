@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * printf_helper - help printf to print args
+ * printf_one - help printf to print args
  * @c: the specifier
  * @args: the arguments
  * Return: invoke function and return number of char
 */
 
-int printf_helper(char c, va_list args)
+int printf_one(char c, va_list args)
 {
-	int i = 0, printingCounter;
+	int i = 0;
 
 	specifiers specs[] = {
 		{"c", handle_c,}, {"s", handle_s},
@@ -17,19 +17,49 @@ int printf_helper(char c, va_list args)
 		{"i", handle_di}, {NULL, NULL}
 	};
 
-	while (specs[i].flag != NULL)
+	while (specs[i].flag)
 	{
 		if (specs[i].flag[0] == c)
 		{
-			printingCounter = (specs[i].f(args));
+			return (specs[i].f(args));
 		}
 		i++;
 	}
 
-	if (specs[i].flag[0] == NULL)
+	perror("_printf");
+	va_end(args);
+	return (1);
+}
+
+/**
+ * printf_two- printing what's after slash
+ * @c: the char
+ * Return: returns length and print
+*/
+
+int printf_two(char c)
+{
+	int printingCounter;
+
+	switch (c)
 	{
-		printingCounter = -1;
+		case 'n':
+			printingCounter = _putchar('\n');
+			break;
+
+		case '\\':
+			printingCounter = _putchar('\\');
+			break;
+
+		case 't':
+			printingCounter = _putchar('\t');
+			break;
+
+		default:
+			perror("_printf");
+			return (1);
 	}
+
 	return (printingCounter);
 }
 
