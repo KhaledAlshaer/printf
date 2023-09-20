@@ -50,8 +50,15 @@ int handle_di(va_list args)
 	}
 
 	while (number != 0)
- 	{
-		str[i++] = (number % 10) + '0';
+	{
+		if (number % 10 <= 9)
+		{
+			str[i++] = (number % 10) + '0';
+		}
+		else
+		{
+			str[i++] = ((number % 10) - 10) + 'a';
+		}
 		number /= 10;
 	}
 

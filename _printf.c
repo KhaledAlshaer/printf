@@ -20,7 +20,23 @@ int handle_bs(char c)
 	}
 	else if (c == '0')
 	{
-		write(1, '\0', 1);
+		write(1, "\0", 1);
+	}
+	else if ('\\')
+	{
+		charPrinted = write(1, "\\", 1);
+	}
+	else if ('\'')
+	{
+		charPrinted = write(1, "\'", 1);
+	}
+	else if ('\"')
+	{
+		charPrinted = write(1, "\"", 1);
+	}
+	else if ('r')
+	{
+		write(1, "\r", 1);
 	}
 
 	return (charPrinted);
