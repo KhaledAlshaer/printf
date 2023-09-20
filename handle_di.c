@@ -37,12 +37,12 @@ int handle_di(va_list args)
 	if (number == 0)
 	{
 		str[i++] = '0';
-		str[i] = '\0';
-		_puts(str);
-		return (i);
 	}
-
-	if (number < 0)
+	else if (number == INT_MIN)
+	{
+		return (_puts("-2147483648"));
+	}
+	else if (number < 0)
 	{
 		isNegative = 1;
 		number = -number;
@@ -51,14 +51,7 @@ int handle_di(va_list args)
 
 	while (number != 0)
 	{
-		if (number % 10 <= 9)
-		{
-			str[i++] = (number % 10) + '0';
-		}
-		else
-		{
-			str[i++] = ((number % 10) - 10) + 'a';
-		}
+		str[i++] = (number % 10) + '0';
 		number /= 10;
 	}
 

@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * struct specifiers_struct - struct for specifiers
