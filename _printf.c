@@ -10,11 +10,11 @@ int handle_bs(char c)
 {
 	int charPrinted;
 
-	if (*format == 'n')
+	if (c == 'n')
 	{
 		charPrinted = write(1, "\n", 1);
 	}
-	else if (*format == 't')
+	else if (c == 't')
 	{
 		charPrinted = write(1, "\t", 1);
 	}
