@@ -24,6 +24,7 @@ int _putchar(char c);
 int _puts(char *str);
 int _strlen(char *str);
 int printable(char c);
+void revString(char *string, int start, int end);
 
 int isFormatValid(const char *format);
 
@@ -33,6 +34,8 @@ int handle_percent(va_list args);
 int handle_specials(va_list args);
 
 int handle_di(va_list args);
+
+int handle_b(va_list args);
 
 int printf_one(char c, va_list args);
 int printf_two(char c);

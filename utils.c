@@ -60,3 +60,25 @@ int printable(char c)
 
 	return (0);
 }
+
+/**
+ * revString - rev the string
+ * @str: the string
+ * @start: first number
+ * @end: last number
+ * Return: Nothing
+*/
+
+void revString(char *str, int start, int end)
+{
+	char temp;
+
+	while (start < end)
+	{
+		temp = str[start];
+		str[start] = str[end];
+		str[end] = temp;
+		start++;
+		end--;
+	}
+}

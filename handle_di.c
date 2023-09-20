@@ -1,28 +1,6 @@
 #include "main.h"
 
 /**
- * revString - rev the string
- * @str: the string
- * @start: first number
- * @end: last number
- * Return: Nothing
-*/
-
-void revString(char *str, int start, int end)
-{
-	char temp;
-
-	while (start < end)
-	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
-	}
-}
-
-/**
  * handle_di - handling num
  * @args: the number
  * Return: the length and print the number

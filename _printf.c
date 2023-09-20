@@ -81,10 +81,14 @@ int handle_prc(char c, va_list args)
 	{
 		charPrinted = handle_s(args);
 	}
+	else if (c == 'b')
+	{
+		charPrinted = handle_b(args);
+	}
 	else
 	{
 		charPrinted = write(1, "%", 1);
-		charPrinted = write(1, &c, 1);
+		charPrinted += write(1, &c, 1);
 	}
 
 	return (charPrinted);
