@@ -31,31 +31,29 @@ void revString(char *str, int start, int end)
 int handle_di(va_list args)
 {
 	int number = va_arg(args, int);
-	int counter = 0, isNegative = 0, temp, i;
+	int isNegative = 0, i = 0;
 	char str[20];
+
+	if (number == 0)
+	{
+		str[i++] = '0';
+		str[i] = '\0';
+		_puts(str);
+		return (i);
+	}
 
 	if (number < 0)
 	{
 		isNegative = 1;
 		number = -number;
-	}
-
-	temp = number;
-	do {
-		counter++;
-		temp /= 10;
-	} while (temp > 0);
-
-	i = 0;
-	if (isNegative)
-	{
 		str[i++] = '-';
 	}
 
-	do {
-		str[i++] = (char)((number % 10) + '0');
+	while (number != 0)
+ 	{
+		str[i++] = (number % 10) + '0';
 		number /= 10;
-	} while (number > 0);
+	}
 
 	str[i] = '\0';
 
@@ -63,5 +61,5 @@ int handle_di(va_list args)
 
 	_puts(str);
 
-	return (counter);
+	return (i);
 }

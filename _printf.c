@@ -18,6 +18,10 @@ int handle_bs(char c)
 	{
 		charPrinted = write(1, "\t", 1);
 	}
+	else if (c == '0')
+	{
+		write(1, '\0', 1);
+	}
 
 	return (charPrinted);
 }
