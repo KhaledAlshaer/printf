@@ -81,6 +81,10 @@ int handle_prc(char c, va_list args)
 	{
 		charPrinted = handle_s(args);
 	}
+	else
+	{
+		return (-1);
+	}
 
 	return (charPrinted);
 }
@@ -107,6 +111,10 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			charPrinted = handle_prc(*format, args);
+			if (handle_prc(*format, args) == -1)
+			{
+				return (-1);
+			}
 		}
 		else if (*format == '\\')
 		{
