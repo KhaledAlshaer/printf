@@ -36,15 +36,15 @@ int handle_bs(char c)
 	{
 		write(1, "\0", 1);
 	}
-	else if ('\\')
+	else if (c == '\\')
 	{
 		charPrinted = write(1, "\\", 1);
 	}
-	else if ('\'')
+	else if (c == '\'')
 	{
 		charPrinted = write(1, "\'", 1);
 	}
-	else if ('\"')
+	else if (c == '\"')
 	{
 		charPrinted = write(1, "\"", 1);
 	}
@@ -96,6 +96,10 @@ int _printf(const char *format, ...)
 	int charPrinted, printedLen = 0;
 	va_list args;
 
+	if (isFormatValid(format) == -1)
+	{
+		return (-1);
+	}
 	va_start(args, format);
 	while (*format)
 	{
