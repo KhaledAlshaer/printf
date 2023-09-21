@@ -22,7 +22,7 @@ int handle_b(va_list args)
 
 	if (binary == NULL)
 	{
-		exit(1);
+		return (-1);
 	}
 
 	while (num)

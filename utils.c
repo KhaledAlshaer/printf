@@ -48,20 +48,6 @@ int _strlen(char *str)
 }
 
 /**
- * printable - check if c is printable
- * @c: the char
- * Return: 1 for true, 0 for false
-*/
-
-int printable(char c)
-{
-	if (c >= 32 && c < 127)
-		return (1);
-
-	return (0);
-}
-
-/**
  * revString - rev the string
  * @str: the string
  * @start: first number
