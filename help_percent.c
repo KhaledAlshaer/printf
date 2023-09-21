@@ -19,6 +19,8 @@ int handle_uoxX(char c, va_list args)
 		charPrinted = handle_x(args);
 	else if (c == 'X')
 		charPrinted = handle_X(args);
+	else if (c == 'r')
+		charPrinted = handle_r(args);
 
 	return (charPrinted);
 }
@@ -55,7 +57,7 @@ int handle_prc(char c, va_list args)
 	{
 		charPrinted = handle_b(args);
 	}
-	else if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
+	else if (c == 'u' || c == 'o' || c == 'x' || c == 'X' || c == 'r')
 		charPrinted = handle_uoxX(c, args);
 	else
 	{

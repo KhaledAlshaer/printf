@@ -45,6 +45,8 @@ int handle_o(va_list args);
 int handle_x(va_list args);
 int handle_X(va_list args);
 
+int handle_r(va_list args);
+
 int printf_one(char c, va_list args);
 int printf_two(char c);
 int _printf(const char *format, ...);
