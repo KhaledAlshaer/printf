@@ -13,7 +13,7 @@ int handle_r(va_list args)
 	char *str = va_arg(args, char*);
 
 	if (str == NULL)
-		str = "(null)";
+		return (-1);
 
 	for (len = 0; str[len] != '\0'; len++)
 	{
