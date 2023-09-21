@@ -11,7 +11,7 @@ int handle_c(va_list args)
 	int len;
 	char c = va_arg(args, int);
 
-	if (c < 32 || (unsigned char)c > 127)
+	if (c < 0 || (unsigned char)c > 127)
 	{
 		len = write(1, "?", 1);
 	}
